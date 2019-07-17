@@ -1,0 +1,28 @@
+
+var a = [{"cusId":"54767","customerName":"VR Test Customer 001","budgetAct":2,"actualAct":1,"diff":-1},{"cusId":"54768","customerName":"VR Test Customer 003","budgetAct":5,"actualAct":2,"diff":-3},{"cusId":"54770","customerName":"VR Test Customer 004","budgetAct":1,"actualAct":1,"diff":0}];
+
+
+var b = [{"cusId":"54760","customerName":"VR Test Customer 044","budgetAct":8,"actualAct":2,"diff":-6},{"cusId":"54767","customerName":"VR Test Customer 001","budgetAct":2,"actualAct":0,"diff":-2},{"cusId":"54768","customerName":"VR Test Customer 003","budgetAct":5,"actualAct":0,"diff":-5},{"cusId":"54769","customerName":"VR Test Customer 002","budgetAct":6,"actualAct":0,"diff":-6},{"cusId":"54770","customerName":"VR Test Customer 004","budgetAct":1,"actualAct":0,"diff":-1}]; 
+ 
+function comparer(otherArray){
+  
+return function(current){
+    
+return otherArray.filter(function(other){
+      
+return other.cusId == current.cusId
+    
+}).length == 0;
+  
+}
+}
+
+
+
+var onlyInB = b.filter(comparer(a));
+
+console.log("Only In B: "+JSON.stringify(onlyInB) );
+
+var result = a.concat(onlyInB);
+
+console.log("Result: "+JSON.stringify(result));
